@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 // ルーティングを設定するコントローラーを宣言する
 use App\Http\Controllers\HelloController;
+
+
 
 class PostController extends Controller
 {
@@ -22,6 +25,11 @@ class PostController extends Controller
         // Are you sure the view exists and is a .blade.php file?
 
         // return view('index');
-        return view('posts.index');
+        // return view('posts.index');
+
+
+        $posts = DB::table('posts')->get();
+
+        return view('posts.index', compact('posts'));
     }
 }
